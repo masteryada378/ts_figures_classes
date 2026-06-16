@@ -31,8 +31,8 @@ export class Triangle implements Figure {
 
     if (a >= b + c || b >= a + c || c >= a + b) {
       throw new Error(
-        // eslint-disable-next-line max-len
-        'The longest side of a triangle must be less than the sum of the other two sides',
+        'The longest side of a triangle must be ' +
+          'less than the sum of the other two sides',
       );
     }
   }
