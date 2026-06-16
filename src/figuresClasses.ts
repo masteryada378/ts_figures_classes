@@ -30,10 +30,7 @@ export class Triangle implements Figure {
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
-      throw new Error(
-        'The longest side of a triangle must be ' +
-          'less than the sum of the other two sides',
-      );
+      throw new Error(`sides ${a}, ${b} and ${c} can't form a triangle`);
     }
   }
 
