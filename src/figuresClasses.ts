@@ -1,25 +1,38 @@
+export enum Shape {
+  Triangle = 'triangle',
+  Circle = 'circle',
+  Rectangle = 'rectangle',
+}
+
+export enum Color {
+  Red = 'red',
+  Green = 'green',
+  Blue = 'blue',
+}
+
 export interface Figure {
-  shape: 'triangle' | 'circle' | 'rectangle';
-  color: 'red' | 'green' | 'blue';
+  shape: Shape;
+  color: Color;
   getArea(): number;
 }
 
 export class Triangle implements Figure {
-  shape: 'triangle' = 'triangle';
+  public shape: Shape = Shape.Triangle;
 
   constructor(
-    public color: 'red' | 'green' | 'blue',
+    public color: Color,
     public a: number,
     public b: number,
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Sides must be greater than 0');
+      throw new Error('Triangle sides must be greater than 0');
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
       throw new Error(
-        "The longest side can't be greater or equal to the sum of two others",
+        // eslint-disable-next-line max-len
+        'The longest side of a triangle must be less than the sum of the other two sides',
       );
     }
   }
@@ -33,14 +46,14 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-  shape: 'circle' = 'circle';
+  public shape: Shape = Shape.Circle;
 
   constructor(
-    public color: 'red' | 'green' | 'blue',
+    public color: Color,
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be greater than 0');
+      throw new Error('Circle radius must be greater than 0');
     }
   }
 
@@ -52,15 +65,15 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  shape: 'rectangle' = 'rectangle';
+  public shape: Shape = Shape.Rectangle;
 
   constructor(
-    public color: 'red' | 'green' | 'blue',
+    public color: Color,
     public width: number,
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Dimensions must be greater than 0');
+      throw new Error('Rectangle width and height must be greater than 0');
     }
   }
 
